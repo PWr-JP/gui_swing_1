@@ -44,7 +44,20 @@ public class MainWindow extends JFrame{
         ok.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 // sprawdzić pola userName i password
-                userName.setText("Siemano");
+                if(Main.userExists(userName.getText())){
+                    if(Main.isCorrect(userName.getText(), password.getPassword())) {
+                        // wypisać na zielono
+                        System.out.println("Dobre haslo");
+                    }
+                    else{
+                        // wypisac ze zle/czerwony kolor
+                        System.out.println("Zle dane");
+                    }
+                }
+                else{
+                    // wypisac ze zle/czerwony kolor
+                    System.out.println("Zle dane");
+                }
             }
         });
         cancel.addActionListener(new ActionListener(){
@@ -66,8 +79,8 @@ public class MainWindow extends JFrame{
         add(lUser);
         add(lPassword);
 
-        setLayout(null);//using no layout managers
-        setVisible(true);//making the frame visible
+        setLayout(null);
+        setVisible(true);
         setTitle("Log in");
     }
     public static void main(String[] args) {
@@ -80,7 +93,5 @@ public class MainWindow extends JFrame{
                 }
             }
         });
-        System.out.println("Program konsolowy");
-        //System.exit(0);
     }
 }
