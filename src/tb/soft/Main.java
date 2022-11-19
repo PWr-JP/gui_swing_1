@@ -4,6 +4,16 @@ import java.util.HashMap;
 
 public class Main {
     private static HashMap<String, char[]> usersInfo = new HashMap<String, char[]>();
+
+    public static boolean addUser(String user, char[] password){
+        if(userExists(user) == false)
+        {
+            usersInfo.put(user, password);
+            return true;
+        }
+        else return false;
+    }
+
     public static boolean userExists(String user){
         if(usersInfo.containsKey(user)){
             return true;

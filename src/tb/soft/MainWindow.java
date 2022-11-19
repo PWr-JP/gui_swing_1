@@ -47,15 +47,18 @@ public class MainWindow extends JFrame{
                 if(Main.userExists(userName.getText())){
                     if(Main.isCorrect(userName.getText(), password.getPassword())) {
                         // wypisać na zielono
+                        getContentPane().setBackground(Color.GREEN);
                         System.out.println("Dobre haslo");
                     }
                     else{
                         // wypisac ze zle/czerwony kolor
+                        getContentPane().setBackground(Color.red);
                         System.out.println("Zle dane");
                     }
                 }
                 else{
                     // wypisac ze zle/czerwony kolor
+                    getContentPane().setBackground(Color.red);
                     System.out.println("Zle dane");
                 }
             }
@@ -65,6 +68,42 @@ public class MainWindow extends JFrame{
                 // clear pola?
                 userName.setText("");
                 password.setText("");
+            }
+        });
+
+        register.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // dodaj użytkownika
+                String un = userName.getText();
+                char[] ps = password.getPassword();
+                userName.setText("");
+                password.setText("");
+                if(Main.addUser(un, ps) == true){
+                    JFrame pop = new JFrame("Success");
+                    pop.setBounds(getLocation().x + (getWidth()-300)/2, getLocation().y + (getHeight()-100)/2, 300, 100);
+
+                    JLabel success = new JLabel("User created!");
+                    success.setBounds((pop.getWidth() - 78)/2 , pop.getHeight()/2 - 40,78,40);
+
+                    pop.getContentPane().setBackground(Color.green);
+                    pop.add(success);
+                    pop.setLayout(null);
+                    pop.setVisible(true);
+                }
+                else{
+                    JFrame pop = new JFrame("Failure");
+                    pop.setBounds(getLocation().x + (getWidth()-300)/2, getLocation().y + (getHeight()-100)/2, 300, 100);
+
+                    JLabel failure = new JLabel("User exists!");
+                    failure.setBounds((pop.getWidth() - 68)/2, pop.getHeight()/2 - 40,68,40);
+
+                    pop.getContentPane().setBackground(Color.red);
+                    pop.add(failure);
+                    pop.setLayout(null);
+                    pop.setVisible(true);
+                }
+                un = null;
+                ps = null;
             }
         });
 
