@@ -9,14 +9,8 @@ public class User {
         this.password = password.clone();
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
     public String getUsername() {
         return username;
-    }
-    public void setPassword(char[] password) {
-        this.password = password;
     }
     public char[] getPassword() {
         return password;
