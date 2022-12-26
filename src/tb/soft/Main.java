@@ -46,8 +46,6 @@ public class Main {
         un = null;
         ps = null;
 
-        CheckUser u = new CheckUser();
-
         MainWindow w = new MainWindow();
     }
 }

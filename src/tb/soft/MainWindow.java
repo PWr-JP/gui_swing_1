@@ -1,7 +1,9 @@
 package tb.soft;
+
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 /*
 * okienko:
 * tytuł
@@ -18,7 +20,7 @@ import java.awt.event.*;
  * klasa główna zawierająca metodę statyczną main
  */
 public class MainWindow extends JFrame{
-    JFrame f;
+    //JFrame f;
 
     MainWindow(){
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -78,7 +80,7 @@ public class MainWindow extends JFrame{
                 char[] ps = password.getPassword();
                 userName.setText("");
                 password.setText("");
-                if(Main.addUser(un, ps) == true){
+                if(Main.addUser(un, ps)){
                     JFrame pop = new JFrame("Success");
                     pop.setBounds(getLocation().x + (getWidth()-300)/2, getLocation().y + (getHeight()-100)/2, 300, 100);
 
